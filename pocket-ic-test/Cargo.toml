@@ -1,0 +1,8 @@
+[package]
+name = "pocket-ic-test"
+version = "0.1.0"
+edition = "2024"
+
+[dev-dependencies]
+pocket-ic = "7.0.0"
+url = "2.5.4"
