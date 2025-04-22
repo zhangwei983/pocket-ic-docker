@@ -9,12 +9,12 @@ RUN apt -yq update && \
 WORKDIR /pocket-ic
 
 # Download pocket-ic.
-RUN curl -L --retry 3 --retry-delay 5 --output pocket-ic.gz https://github.com/dfinity/pocketic/releases/download/8.0.0/pocket-ic-x86_64-linux.gz
+ARG POCKET_IC_URL=https://github.com/dfinity/pocketic/releases/latest/download/pocket-ic-x86_64-linux.gz
+RUN curl -L --retry 3 --retry-delay 5 --output pocket-ic.gz "${POCKET_IC_URL}"
 
 # Extract pocket-ic.
 RUN gzip -f -d pocket-ic.gz && \
-    chmod +x pocket-ic && \
-    export POCKET_IC_BIN="$(pwd)/pocket-ic"
+    chmod +x pocket-ic
 
 # Run pocket-ic.
 CMD ["/bin/bash", "-c", "/pocket-ic/pocket-ic"]
