@@ -17,4 +17,6 @@ RUN gzip -f -d pocket-ic.gz && \
     chmod +x pocket-ic
 
 # Run pocket-ic.
-CMD ["/bin/bash", "-c", "/pocket-ic/pocket-ic"]
+ENV PORT=0
+ENV TTL=60
+CMD ["/bin/bash", "-c", "/pocket-ic/pocket-ic --port ${PORT} --ttl ${TTL}"]
