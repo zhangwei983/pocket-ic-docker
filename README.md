@@ -37,3 +37,25 @@ Use the below command to start an existing docker container:
 ```bash
 docker start pocket-ic
 ```
+
+### Run the test
+
+Please run below commands to run the test against the `pocket-ic server` running inside the container.
+
+```bash
+cd pocket-ic-test
+cargo run
+```
+
+You will see something similar as below:
+
+```bash
+pocket ic id: 0
+canister id: "lxzze-o7777-77777-aaaaa-cai"
+```
+
+## Trouble shooting
+
+### Start pocket-ic with ip addresss `0.0.0.0`
+
+Please refer to [Dockerfile](./Dockerfile#L22), this is used to fix the issue that `localhost` is not accessible when running docker on `Windows + WSL`.
