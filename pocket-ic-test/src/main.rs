@@ -8,5 +8,5 @@ fn main() {
     println!("pocket ic id: {:?}", pic.instance_id());
 
     let canister_id = pic.create_canister();
-    println!("canister id: {:?}", canister_id);
+    println!("canister id: {:?}", canister_id.to_text());
 }
