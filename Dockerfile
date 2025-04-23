@@ -19,4 +19,4 @@ RUN gzip -f -d pocket-ic.gz && \
 # Run pocket-ic.
 ENV PORT=0
 ENV TTL=60
-CMD ["/bin/bash", "-c", "/pocket-ic/pocket-ic --ip-addr 0.0.0.0 --port ${PORT} --ttl ${TTL}"]
+CMD ["/bin/bash", "-c", "/pocket-ic/pocket-ic --port ${PORT} --ttl ${TTL}"]
