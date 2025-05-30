@@ -17,7 +17,7 @@ docker build -t pocket-ic .
 Or use `--build-arg` to provide custom pocket-ic download url:
 
 ```bash
-docker build --build-arg POCKET_IC_URL=https://github.com/dfinity/pocketic/releases/download/8.0.0/pocket-ic-x86_64-linux.gz -t pocket-ic .
+docker build --build-arg POCKET_IC_URL=https://github.com/dfinity/pocketic/releases/download/9.0.1/pocket-ic-x86_64-linux.gz -t pocket-ic .
 ```
 
 ### Run image
@@ -25,12 +25,11 @@ docker build --build-arg POCKET_IC_URL=https://github.com/dfinity/pocketic/relea
 Use the below command to run a docker image:
 
 ```bash
-docker run -p 8081:8081 -e PORT=8081 -e TTL=2592000 --name pocket-ic -t pocket-ic
+docker run -p 8081:8081 -p 8082:8082 --name pocket-ic -t pocket-ic
 ```
 
-- `-e PORT=8081` to let `pocket-ic` listen on port `8081`
-- `-e TTL=2592000` to let `pocket-ic` wait 2592000 seconds (30 days) for connecting before exiting
-- `-p 8081:8081` to map the host port to the container port
+- `-p 8081:8081` to map the `pocket-ic server` port to the container port
+- `-p 8082:8082` to map the `pocket-ic gateway` port to the container port
 
 Use the below command to start an existing docker container:
 
@@ -48,6 +47,7 @@ You will see something similar as below:
 
 ```bash
 8081/tcp -> 0.0.0.0:8081
+8082/tcp -> 0.0.0.0:8082
 ```
 
 ### Run the test

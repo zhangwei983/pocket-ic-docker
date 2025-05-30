@@ -2,6 +2,9 @@
 FROM --platform=linux/amd64 ubuntu:22.04
 SHELL ["bash", "-c"]
 
+COPY wrapper_script.sh wrapper_script.sh
+RUN chmod +x wrapper_script.sh
+
 # Install curl, ca-certificates and libunwind8.
 RUN apt -yq update && \
     apt -yqq install --no-install-recommends curl ca-certificates libunwind8
@@ -17,6 +20,4 @@ RUN gzip -f -d pocket-ic.gz && \
     chmod +x pocket-ic
 
 # Run pocket-ic.
-ENV PORT=0
-ENV TTL=60
-CMD ["/bin/bash", "-c", "/pocket-ic/pocket-ic --ip-addr 0.0.0.0 --port ${PORT} --ttl ${TTL}"]
+CMD ["/bin/bash", "-c", "/wrapper_script.sh"]
