@@ -25,9 +25,9 @@ docker build --build-arg POCKET_IC_URL=https://github.com/dfinity/pocketic/relea
 Use the below command to run a docker image:
 
 ```bash
-docker run -p 8081:8081 -p 8082:8082 --name pocket-ic -t pocket-ic
+docker run -p 8080:8080 -p 8081:8081 -p 8082:8082 --name pocket-ic -t pocket-ic
 ```
-
+- `-p 8080:8080` to map the `replica API` port to the container port
 - `-p 8081:8081` to map the `pocket-ic server` port to the container port
 - `-p 8082:8082` to map the `pocket-ic gateway` port to the container port
 
@@ -46,6 +46,7 @@ docker port pocket-ic
 You will see something similar as below:
 
 ```bash
+8080/tcp -> 0.0.0.0:8080
 8081/tcp -> 0.0.0.0:8081
 8082/tcp -> 0.0.0.0:8082
 ```
