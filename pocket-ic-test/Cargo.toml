@@ -4,5 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-pocket-ic = "9.0.1"
+candid = "0.10.14"
+pocket-ic = { git = "https://github.com/dfinity/ic", branch = "master" }
 url = "2.5.4"
+wat = "1.233.0"
