@@ -1,5 +1,5 @@
 # Set the base image.
-FROM --platform=linux/amd64 ubuntu:22.04
+FROM --platform=linux/arm64 ubuntu:22.04
 SHELL ["bash", "-c"]
 
 COPY wrapper_script.sh wrapper_script.sh
@@ -12,12 +12,11 @@ RUN apt -yq update && \
 WORKDIR /pocket-ic
 
 # Download pocket-ic.
-ARG POCKET_IC_URL=https://github.com/dfinity/pocketic/releases/latest/download/pocket-ic-x86_64-linux.gz
-RUN curl -L --retry 3 --retry-delay 5 --output pocket-ic.gz "${POCKET_IC_URL}"
+ARG POCKET_IC_URL=https://download.dfinity.systems/ic/0000000000000000000000000000000000000000/binaries/arm64-linux/pocket-ic-server-arm64-linux
+RUN curl -L --retry 3 --retry-delay 5 --output pocket-ic "${POCKET_IC_URL}"
 
 # Extract pocket-ic.
-RUN gzip -f -d pocket-ic.gz && \
-    chmod +x pocket-ic
+RUN chmod +x pocket-ic
 
 # Run pocket-ic.
 CMD ["/bin/bash", "-c", "/wrapper_script.sh"]
