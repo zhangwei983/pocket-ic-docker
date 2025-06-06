@@ -4,5 +4,5 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-pocket-ic = "7.0.0"
+pocket-ic = "9.0.1"
 url = "2.5.4"
