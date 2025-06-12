@@ -14,10 +14,10 @@ Use the below command to build the docker image:
 docker build -t pocket-ic .
 ```
 
-Or use `--build-arg` to provide custom pocket-ic download url:
+Or use `--build-arg` to provide a specific pocket-ic version:
 
 ```bash
-docker build --build-arg POCKET_IC_URL=https://github.com/dfinity/pocketic/releases/download/9.0.1/pocket-ic-x86_64-linux.gz -t pocket-ic .
+docker build --build-arg POCKET_REV=f195ba756bc3bf170a2888699e5e74101fdac6ba -t pocket-ic .
 ```
 
 ### Run image
@@ -25,11 +25,10 @@ docker build --build-arg POCKET_IC_URL=https://github.com/dfinity/pocketic/relea
 Use the below command to run a docker image:
 
 ```bash
-docker run -p 8080:8080 -p 8081:8081 -p 8082:8082 --name pocket-ic -t pocket-ic
+docker run -p 8080:8080 -p 8081:8081 --name pocket-ic -t pocket-ic
 ```
-- `-p 8080:8080` to map the `replica API` port to the container port
+- `-p 8080:8080` to map the `replica URL` port to the container port
 - `-p 8081:8081` to map the `pocket-ic server` port to the container port
-- `-p 8082:8082` to map the `pocket-ic gateway` port to the container port
 
 Use the below command to start an existing docker container:
 
@@ -48,7 +47,6 @@ You will see something similar as below:
 ```bash
 8080/tcp -> 0.0.0.0:8080
 8081/tcp -> 0.0.0.0:8081
-8082/tcp -> 0.0.0.0:8082
 ```
 
 ### Run the test
